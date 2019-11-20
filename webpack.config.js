@@ -5,8 +5,8 @@ const production = true
 
 const babelOptions = {
   presets: production
-    ? ['@babel/preset-env', '@babel/preset-flow', '@babel/preset-react']
-    : ['@babel/preset-flow', '@babel/preset-react'],
+    ? ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react']
+    : ['@babel/preset-typescript', '@babel/preset-react'],
   plugins: [
     ['@babel/plugin-transform-for-of', { assumeArray: true }],
     '@babel/plugin-transform-runtime',
@@ -17,12 +17,12 @@ const babelOptions = {
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/io/react-native/react-native-worker.js',
+  entry: './src/io/react-native/react-native-worker.ts',
   mode: production ? 'production' : 'development',
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
         use: { loader: 'babel-loader', options: babelOptions }
       }
@@ -32,5 +32,8 @@ module.exports = {
     filename: 'lib/react-native/edge-core.js',
     path: path.resolve(__dirname)
   },
-  performance: { hints: false }
+  performance: { hints: false },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  }
 }

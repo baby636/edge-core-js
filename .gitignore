@@ -1,5 +1,7 @@
 # Build output:
 /lib/
+/index.js.flow
+/types.js.flow
 /types.js
 
 # Package managers:

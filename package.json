@@ -41,9 +41,9 @@
     "/types.js"
   ],
   "scripts": {
-    "build.lib": "sucrase ./src -q -d ./lib -t flow,jsx",
+    "build.lib": "sucrase ./src -q -d ./lib -t typescript,jsx",
     "build.react-native": "webpack",
-    "build.types": "node ./make-types.js; tsc",
+    "build.types": "node ./make-types.js",
     "clean": "rimraf lib",
     "fix": "npm run lint -- --fix",
     "flow": "flow",
@@ -88,6 +88,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.7.4",
     "@babel/runtime": "^7.0.0",
     "@types/chai": "^4.2.12",
     "@types/elliptic": "^6.4.12",
@@ -113,6 +114,7 @@
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "eslint-plugin-standard": "^4.0.1",
     "flow-bin": "^0.89.0",
+    "flowgen": "^1.10.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "mocha": "^8.1.1",
