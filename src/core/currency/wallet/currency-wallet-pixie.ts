@@ -229,6 +229,7 @@ export const walletPixie: TamePixie<CurrencyWalletProps> = combinePixies({
                   payload: { walletId: id }
                 })
               )
+              .catch(e => {})
           }
         }
       }
@@ -242,12 +243,12 @@ export const walletPixie: TamePixie<CurrencyWalletProps> = combinePixies({
       let stopped: boolean = false
       let timeout: ReturnType<typeof setTimeout> | undefined
 
-      async function doSync(): Promise<void> {
+      function doSync(): void {
         const ai: ApiInput = input as any // Safe, since input extends ApiInput
         const { id } = input.props
 
         try {
-          syncStorageWallet(ai, id)
+          syncStorageWallet(ai, id).catch(e => {})
         } catch (e) {
           // We don't report sync failures, since that could be annoying.
         }

@@ -71,9 +71,16 @@ export const exchange: TamePixie<RootProps> = filterPixie(
       })
 
       // Wait for everyone to finish before doing another round:
-      Promise.all(promises).then(() => {
-        if (!stopped) timeout = setTimeout(doFetch, 30 * 1000)
-      })
+      Promise.all(promises).then(
+        () => {
+          if (!stopped) timeout = setTimeout(doFetch, 30 * 1000)
+        },
+        error => {
+          input.props.io.console.info(
+            `Unexpected rate update error: ${String(error)}`
+          )
+        }
+      )
     }
 
     return {

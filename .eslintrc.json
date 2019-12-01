@@ -13,9 +13,6 @@
     "simple-import-sort"
   ],
   "rules": {
-    "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/no-misused-promises": "off",
-    "@typescript-eslint/require-array-sort-compare": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
 
     "@typescript-eslint/no-empty-function": "off",
