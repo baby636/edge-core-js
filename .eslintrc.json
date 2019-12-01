@@ -13,9 +13,9 @@
     "simple-import-sort"
   ],
   "rules": {
+    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/promise-function-async": "off",
-    "flowtype/array-style-complex-type": ["error", "verbose"],
-    "flowtype/array-style-simple-type": ["error", "shorthand"],
+    "@typescript-eslint/require-await": "off",
     "no-var": "error",
     "simple-import-sort/sort": "error"
   }
