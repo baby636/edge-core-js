@@ -76,7 +76,7 @@ export type RootAction =
       }
     }
   | {
-      // Somebody just added a custom token to the wallet.
+      // Somebody just added a custom token type to the wallet.
       type: 'ADDED_CUSTOM_TOKEN'
       payload: EdgeTokenInfo
     }
