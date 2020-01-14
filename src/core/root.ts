@@ -12,9 +12,12 @@ import { reducer, RootState } from './root-reducer'
 
 let allContexts: EdgeContext[] = []
 
+// @ts-ignore `window` doesn't exist in React Native
+const global: any = typeof window !== 'undefined' ? window : {}
+
 const composeEnhancers =
-  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ name: 'core' })
+  global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ != null
+    ? global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ name: 'core' })
     : compose
 
 /**

@@ -25,6 +25,9 @@ export interface ScryptOutput {
   ) => Promise<{ hash: Uint8Array; time: number }>
 }
 
+// @ts-ignore `window` doesn't exist in React Native
+const global: any = typeof window !== 'undefined' ? window : {}
+
 /**
  * Prevents a function from running in parallel.
  * The currently-running operation must finish before the new one starts.
@@ -152,10 +155,8 @@ export const scrypt: TamePixie<RootProps> = combinePixies({
 
     // Find the best timer on this platform:
     const getTime =
-      typeof window !== 'undefined' &&
-      window.performance &&
-      typeof window.performance.now === 'function'
-        ? () => window.performance.now()
+      global.performance != null && typeof global.performance.now === 'function'
+        ? () => global.performance.now()
         : () => Date.now()
 
     // Performs an scrypt calculation, recording the elapsed time:
