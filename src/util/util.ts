@@ -2,7 +2,7 @@
  * Copies the selected properties into a new object, if they exist.
  */
 export function filterObject(source: any, keys: string[]): any {
-  const out = {}
+  const out: any = {}
   for (const key of keys) {
     if (key in source) {
       out[key] = source[key]
@@ -25,7 +25,7 @@ export function softCat<T>(...lists: Array<T[] | undefined>): T[] {
  * preferring the items from later objects.
  */
 export function mergeDeeply(...objects: any[]): any {
-  const out = {}
+  const out: any = {}
 
   for (const o of objects) {
     if (o == null) continue
