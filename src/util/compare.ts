@@ -27,7 +27,7 @@ function compareObjects(a: any, b: any, type: string): boolean {
     // the objects must be identical, regardless of key order.
     for (const key of keys) {
       if (
-        !Object.prototype.hasOwnProperty.call(b, key) ||
+        !(Object.prototype.hasOwnProperty.call(b, key) as boolean) ||
         !compare(a[key], b[key])
       ) {
         return false
