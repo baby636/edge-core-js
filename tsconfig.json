@@ -10,8 +10,8 @@
     "moduleResolution": "node",
     "target": "es2015",
 
-    "strict": true
+    // "strict": true
+    "noImplicitAny": false
   },
-  "exclude": [],
-  "include": ["lib/types"]
+  "exclude": ["lib", "notes"]
 }
