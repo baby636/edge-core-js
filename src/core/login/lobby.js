@@ -13,7 +13,7 @@ import { loginFetch } from './login-fetch.js'
 const EC = elliptic.ec
 const secp256k1 = new EC('secp256k1')
 
-type Keypair = Object
+type Keypair = elliptic.ec.KeyPair
 
 // The JSON structure placed in the lobby as a reply:
 export type LobbyReply = {

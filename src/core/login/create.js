@@ -48,7 +48,7 @@ export function usernameAvailable(
  */
 export function makeCreateKit(
   ai: ApiInput,
-  parentLogin?: LoginTree,
+  parentLogin: LoginTree | void,
   appId: string,
   username: string,
   opts: LoginCreateOpts
@@ -72,20 +72,21 @@ export function makeCreateKit(
   }
 
   // Set up login methods:
+  const dummyKit: LoginKit = {}
   const parentBox =
     parentLogin != null
       ? encrypt(io, loginKey, parentLogin.loginKey)
       : undefined
-  const passwordKit =
+  const passwordKit: Promise<LoginKit> =
     opts.password != null
       ? makePasswordKit(ai, dummyLogin, username, opts.password)
-      : {}
-  const pin2Kit =
+      : Promise.resolve(dummyKit)
+  const pin2Kit: LoginKit =
     opts.pin != null
       ? makeChangePin2Kit(ai, dummyLogin, username, opts.pin, true)
-      : {}
+      : dummyKit
   const keysKit =
-    opts.keyInfo != null ? makeKeysKit(ai, dummyLogin, opts.keyInfo) : {}
+    opts.keyInfo != null ? makeKeysKit(ai, dummyLogin, opts.keyInfo) : dummyKit
 
   // Bundle everything:
   return Promise.all([loginId, passwordKit]).then(values => {
@@ -144,8 +145,7 @@ export function createLogin(
     kit.stash.username = fixedName
     kit.login.userId = kit.login.loginId
 
-    const request = {}
-    request.data = kit.server
+    const request = { data: kit.server }
     return loginFetch(ai, 'POST', kit.serverPath, request).then(reply => {
       kit.stash.lastLogin = now
       return saveStash(ai, kit.stash).then(() => kit.login)

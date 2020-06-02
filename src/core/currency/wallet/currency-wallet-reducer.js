@@ -342,8 +342,7 @@ const defaultTx: MergedTransaction = {
   signedTx: '',
   txid: '',
   nativeAmount: {},
-  networkFee: {},
-  providerFee: {}
+  networkFee: {}
 }
 
 /**
