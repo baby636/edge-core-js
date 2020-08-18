@@ -13,7 +13,7 @@ import {
  * Client-side EdgeAccount methods.
  */
 export class AccountSync {
-  readonly allKeys: EdgeWalletInfoFull[]
+  readonly allKeys!: EdgeWalletInfoFull[]
 
   getFirstWalletInfo(type: string): EdgeWalletInfo | undefined {
     const out: EdgeWalletInfoFull | undefined = this.allKeys.find(
@@ -69,11 +69,11 @@ shareData({ checkPasswordRules })
  * Client-side EdgeCurrencyWallet methods.
  */
 export class CurrencyWalletSync {
-  readonly balances: EdgeBalances
-  readonly blockHeight: number
-  readonly currencyInfo: EdgeCurrencyInfo
-  readonly displayPrivateSeed: string | null
-  readonly displayPublicSeed: string | null
+  readonly balances!: EdgeBalances
+  readonly blockHeight!: number
+  readonly currencyInfo!: EdgeCurrencyInfo
+  readonly displayPrivateSeed!: string | null
+  readonly displayPublicSeed!: string | null
 
   getBalance(opts: EdgeCurrencyCodeOptions = {}): string {
     const { currencyCode = this.currencyInfo.currencyCode } = opts

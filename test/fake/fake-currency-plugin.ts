@@ -121,7 +121,7 @@ class FakeCurrencyEngine {
           nativeAmount: '0',
           networkFee: '0',
           ourReceiveAddresses: [],
-          ...settings.txs[txid],
+          ...(settings.txs[txid] as any),
           txid
         }
         const oldTx = state.txs[txid]

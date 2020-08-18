@@ -109,10 +109,11 @@ const accountPixie: TamePixie<AccountProps> = combinePixies({
 
         async function innerSync(): Promise<void> {
           if (input.props.state.accounts[accountId] == null) return
-          const changeLists = await Promise.all(
+          const changeLists: string[][] = await Promise.all(
             accountWalletInfos.map(info => syncStorageWallet(ai, info.id))
           )
-          const changes: string[] = [].concat(...changeLists)
+          const changes: string[] = []
+          for (const list of changeLists) changes.push(...list)
           if (changes.length) {
             await Promise.all([
               reloadPluginSettings(ai, accountId),

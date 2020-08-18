@@ -394,7 +394,7 @@ export function makeCurrencyWalletApi(
       } = spendInfo
 
       const cleanTargets: EdgeSpendTarget[] = []
-      const savedTargets = []
+      const savedTargets: EdgeTransaction['spendTargets'] = []
       for (const target of spendTargets) {
         const { publicAddress, nativeAmount = '0', otherParams = {} } = target
         if (publicAddress == null) continue
