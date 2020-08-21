@@ -12,7 +12,7 @@ export interface HttpRequest {
   readonly method: string
   readonly path: string
   readonly version: string // 'HTTP/1.1'
-  readonly headers: $ReadOnly<HttpHeaders>
+  readonly headers: Readonly<HttpHeaders>
 }
 
 // A server is just an async function that takes some of request

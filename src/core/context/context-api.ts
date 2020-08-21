@@ -32,7 +32,6 @@ import { EdgeInternalStuff } from './internal-api'
 
 export function makeContextApi(ai: ApiInput): EdgeContext {
   const appId = ai.props.state.login.appId
-  const $internalStuff = new EdgeInternalStuff(ai)
   let pauseTimer: ReturnType<typeof setTimeout> | undefined
 
   const out: EdgeContext = {
@@ -44,8 +43,6 @@ export function makeContextApi(ai: ApiInput): EdgeContext {
     async close(): Promise<void> {
       ai.props.close()
     },
-
-    $internalStuff,
 
     fixUsername,
 
@@ -231,6 +228,8 @@ export function makeContextApi(ai: ApiInput): EdgeContext {
       return this.pinLoginEnabled(username)
     }
   }
+  // @ts-ignore: This isn't supposed to be here:
+  out.$internalStuff = new EdgeInternalStuff(ai)
   bridgifyObject(out)
 
   return out

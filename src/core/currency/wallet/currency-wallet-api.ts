@@ -595,6 +595,7 @@ export function combineTxWithFile(
     txid: tx.txid,
     otherParams: { ...tx.otherParams, unfilteredIndex },
 
+    // @ts-ignore legacy property
     amountSatoshi: Number(tx.nativeAmount[currencyCode]),
     nativeAmount: tx.nativeAmount[currencyCode],
     networkFee: tx.networkFee[currencyCode],

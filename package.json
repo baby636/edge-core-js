@@ -50,7 +50,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "precommit": "lint-staged && flow && npm test && npm run prepare",
     "prepare": "npm-run-all clean -p build.*",
-    "test": "mocha -r sucrase/register 'test/**/*.test.js'"
+    "test": "mocha -r sucrase/register 'test/**/*.test.ts'"
   },
   "husky": {
     "hooks": {

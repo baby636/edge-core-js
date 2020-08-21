@@ -32,10 +32,7 @@ export interface StorageWalletsState {
 /**
  * Individual repo reducer.
  */
-const storageWalletReducer: Reducer<
-  StorageWalletState,
-  RootAction
-> = combineReducers({
+const storageWalletReducer: Reducer<StorageWalletState> = combineReducers({
   lastChanges(state = [], action: RootAction): string[] {
     if (action.type === 'STORAGE_WALLET_SYNCED') {
       const { changes } = action.payload

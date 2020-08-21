@@ -34,7 +34,7 @@ function fetchCors(
   const { body, headers = {}, method = 'GET' } = opts
 
   return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest()
+    const xhr = new window.XMLHttpRequest()
 
     // Event handlers:
     function handleError(): void {

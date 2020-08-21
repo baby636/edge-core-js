@@ -7,7 +7,7 @@ import { RootAction } from './actions'
 import { makeLegacyConsole, makeLog } from './log/log'
 import { loadStashes } from './login/login-stash'
 import { PluginIos, watchPlugins } from './plugins/plugins-actions'
-import { rootPixie, RootProps } from './root-pixie'
+import { RootOutput, rootPixie, RootProps } from './root-pixie'
 import { reducer, RootState } from './root-reducer'
 
 let allContexts: EdgeContext[] = []
@@ -48,7 +48,7 @@ export async function makeContext(
   const stashes = await loadStashes(io.disklet, log)
 
   // Start Redux:
-  const enhancers: StoreEnhancer<RootState, RootAction> = composeEnhancers()
+  const enhancers: StoreEnhancer<RootState> = composeEnhancers()
   const redux = createStore(reducer, enhancers)
   redux.dispatch({
     type: 'INIT',
@@ -67,7 +67,7 @@ export async function makeContext(
   const closePlugins = watchPlugins(ios, pluginsInit, redux.dispatch)
 
   // Start the pixie tree:
-  const mirror = { output: {} }
+  const mirror: { output: RootOutput } = { output: {} as any }
   const closePixie = attachPixie(
     redux,
     filterPixie(

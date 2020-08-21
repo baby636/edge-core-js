@@ -48,7 +48,7 @@ export const fakeCurrencyInfo: EdgeCurrencyInfo = {
   transactionExplorer: 'https://edge.app'
 }
 
-const nop: Function = () => {}
+function nop(): void {}
 
 interface State {
   balance: number
@@ -75,10 +75,10 @@ class FakeCurrencyEngine {
       txs: {}
     }
     // Fire initial callbacks:
-    this._updateState(this.state)
+    this.updateState(this.state)
   }
 
-  _updateState(settings: State): void {
+  private updateState(settings: State): void {
     const state = this.state
     const {
       onAddressesChecked = nop,
@@ -137,7 +137,7 @@ class FakeCurrencyEngine {
   }
 
   async changeUserSettings(settings: JsonObject): Promise<void> {
-    await this._updateState(settings)
+    await this.updateState(settings as any)
   }
 
   // Keys:

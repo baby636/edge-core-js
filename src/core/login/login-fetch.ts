@@ -1,5 +1,6 @@
 import {
   EdgeFetchOptions,
+  EdgeIo,
   NetworkError,
   ObsoleteApiError,
   OtpError,
@@ -53,7 +54,8 @@ export function loginFetch(
   path: string,
   body?: any
 ): Promise<any> {
-  const { state, io, log } = ai.props
+  const { state, log } = ai.props
+  const io: EdgeIo = ai.props.io // Pending pixie types
   const { apiKey, serverUri } = state.login
 
   const opts: EdgeFetchOptions = {
@@ -80,7 +82,7 @@ export function loginFetch(
         throw new Error(`Non-JSON reply, HTTP status ${response.status}`)
       })
     },
-    networkError => {
+    (networkError: any) => {
       const time = Date.now() - start
       log(`${method} ${fullUri} failed in ${time}ms, ${String(networkError)}`)
       throw new NetworkError(`Could not reach the auth server: ${path}`)

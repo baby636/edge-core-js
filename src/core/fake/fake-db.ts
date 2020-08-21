@@ -159,7 +159,7 @@ export class FakeDb {
 
     // Create fake repos:
     for (const syncKey of Object.keys(user.repos)) {
-      this.repos[syncKey] = { ...user.repos[syncKey] }
+      this.repos[syncKey] = { ...user.repos[syncKey] } as any
     }
   }
 

@@ -35,7 +35,7 @@ export function MakeEdgeContext(props: {
   onLoad: (context: EdgeContext) => unknown
   onLog?: EdgeOnLog
   options: EdgeContextOptions
-}): React.Node {
+}): React.ReactNode {
   const {
     debug,
     nativeIo,
@@ -67,7 +67,7 @@ export function MakeFakeEdgeWorld(props: {
   onLoad: (world: EdgeFakeWorld) => unknown
   onLog?: EdgeOnLog
   users?: EdgeFakeUser[]
-}): React.Node {
+}): React.ReactNode {
   const {
     debug,
     nativeIo,

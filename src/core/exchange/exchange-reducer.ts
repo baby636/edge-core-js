@@ -89,9 +89,6 @@ function rates(
   return state
 }
 
-export const exchangeCache: Reducer<
-  ExchangeState,
-  RootAction
-> = combineReducers({
+export const exchangeCache: Reducer<ExchangeState> = combineReducers({
   rates
 })

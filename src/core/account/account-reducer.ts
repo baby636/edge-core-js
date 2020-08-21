@@ -277,7 +277,9 @@ export const accountReducer: FatReducer<
   (action: RootAction, next: AccountNext): RootAction => {
     if (
       /^ACCOUNT_/.test(action.type) &&
-      action.payload != null &&
+      'payload' in action &&
+      typeof action.payload === 'object' &&
+      'accountId' in action.payload &&
       action.payload.accountId === next.id
     ) {
       return action

@@ -7,7 +7,8 @@ import {
   makeStorageKeyInfo
 } from '../login/keys'
 import { applyKit, searchTree } from '../login/login'
-import { LoginTree } from '../login/login-types'
+import { LoginStash } from '../login/login-stash'
+import { LoginKit, LoginTree } from '../login/login-types'
 import { ApiInput, RootProps } from '../root-pixie'
 
 function checkLogin(login: LoginTree): void {
@@ -41,11 +42,11 @@ function createChildLogin(
     opts.keyInfo = makeStorageKeyInfo(ai, makeAccountType(appId))
   }
   return makeCreateKit(ai, login, appId, username, opts).then(kit => {
-    const parentKit = {
+    const parentKit: LoginKit = {
       serverPath: kit.serverPath,
       server: kit.server || {},
       login: { children: [kit.login] },
-      stash: { children: [kit.stash] },
+      stash: { children: [kit.stash as LoginStash] },
       loginId: login.loginId
     }
     return applyKit(ai, loginTree, parentKit)

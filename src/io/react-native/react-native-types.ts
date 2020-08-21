@@ -6,7 +6,6 @@ import {
   EdgeFakeUser,
   EdgeFakeWorld,
   EdgeFetchOptions,
-  EdgeNativeIo,
   EdgeOnLog,
   EdgeScryptFunction
 } from '../../types/types'
@@ -24,13 +23,10 @@ export interface ClientIo {
 }
 
 export interface WorkerApi {
-  makeEdgeContext(
-    nativeIo: EdgeNativeIo,
-    opts: EdgeContextOptions
-  ): Promise<EdgeContext>
+  makeEdgeContext(nativeIo: any, opts: EdgeContextOptions): Promise<EdgeContext>
 
   makeFakeEdgeWorld(
-    nativeIo: EdgeNativeIo,
+    nativeIo: any,
     users?: EdgeFakeUser[]
   ): Promise<EdgeFakeWorld>
 }

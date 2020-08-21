@@ -54,5 +54,5 @@ export function addHiddenProperties<O, P>(object: O, properties: P): O & P {
       value: properties[name]
     })
   }
-  return object
+  return object as O & P
 }

@@ -330,7 +330,9 @@ export const currencyWalletReducer: FatReducer<
   currencyWalletInner,
   (action: RootAction, next: CurrencyWalletNext): RootAction => {
     return /^CURRENCY_/.test(action.type) &&
-      action.payload != null &&
+      'payload' in action &&
+      typeof action.payload === 'object' &&
+      'walletId' in action.payload &&
       action.payload.walletId === next.id
       ? action
       : { type: 'UPDATE_NEXT' }

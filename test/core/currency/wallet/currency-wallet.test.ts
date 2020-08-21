@@ -149,7 +149,7 @@ describe('currency wallets', function () {
       assert.equal(txs.length, 1)
       assert.equal(txs[0].txid, 'a')
       assert.strictEqual(txs[0].nativeAmount, '2')
-      // $FlowFixMe legacy support code
+      // @ts-ignore legacy support code
       assert.strictEqual(txs[0].amountSatoshi, 2)
     })
 
@@ -157,7 +157,7 @@ describe('currency wallets', function () {
       assert.equal(txs.length, 1)
       assert.equal(txs[0].txid, 'b')
       assert.strictEqual(txs[0].nativeAmount, '200')
-      // $FlowFixMe legacy support code
+      // @ts-ignore legacy support code
       assert.strictEqual(txs[0].amountSatoshi, 200)
     })
   })
