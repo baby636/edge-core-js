@@ -334,7 +334,7 @@ export async function serverLogin(
   const { deviceDescription } = ai.props.state.login
 
   const request: LoginRequest = {
-    otp: getStashOtp(stash, opts),
+    // otp: getStashOtp(stash, opts),
     voucherId: stash.voucherId,
     voucherAuth: stash.voucherAuth,
     ...serverAuth
@@ -494,20 +494,20 @@ export function makeAuthJson(
   const { voucherAuth, voucherId } =
     stash != null ? stash : { voucherAuth: undefined, voucherId: undefined }
 
-  if (login.loginAuth != null) {
-    return {
-      loginId: login.loginId,
-      loginAuth: base64.stringify(login.loginAuth),
-      otp: getLoginOtp(login),
-      voucherAuth,
-      voucherId
-    }
-  }
+  // if (login.loginAuth != null) {
+  //   return {
+  //     loginId: login.loginId,
+  //     loginAuth: base64.stringify(login.loginAuth),
+  //     otp: getLoginOtp(login),
+  //     voucherAuth,
+  //     voucherId
+  //   }
+  // }
   if (login.passwordAuth != null) {
     return {
       userId: login.userId,
       passwordAuth: base64.stringify(login.passwordAuth),
-      otp: getLoginOtp(login),
+      // otp: getLoginOtp(login),
       voucherAuth,
       voucherId
     }
