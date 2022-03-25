@@ -49,8 +49,9 @@
     "flow": "flow",
     "lint": "eslint .",
     "precommit": "lint-staged && flow && npm test && npm run prepare",
-    "prepare": "npm-run-all clean -p build.*",
-    "test": "mocha -r sucrase/register 'test/**/*.test.js'"
+    "prepare": "yarn run snyk-protect && npm-run-all clean -p build.*",
+    "test": "mocha -r sucrase/register 'test/**/*.test.js'",
+    "snyk-protect": "snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -81,7 +82,8 @@
     "rfc4648": "^1.4.0",
     "scrypt-js": "^2.0.3",
     "yaob": "^0.3.6",
-    "yavent": "^0.1.1"
+    "yavent": "^0.1.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -118,5 +120,6 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
-  "react-native": "lib/react-native.js"
+  "react-native": "lib/react-native.js",
+  "snyk": true
 }
