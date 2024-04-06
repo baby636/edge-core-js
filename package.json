@@ -97,7 +97,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-fake-error-class": "^1.0.0",
     "chai": "^4.2.0",
-    "eslint": "^7.14.0",
+    "eslint": "^9.0.0",
     "eslint-config-standard-kit": "0.15.1",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.1",
